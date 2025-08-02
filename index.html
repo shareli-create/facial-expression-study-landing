@@ -66,7 +66,7 @@
 
     <script>
         // 🔴 REPLACE WITH YOUR APPS SCRIPT URL FROM STEP 2.4
-        const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
         
         // 🔴 REPLACE WITH YOUR INQUISIT STUDY URL
         const STUDY_BASE_URL = 'https://mili2nd.co/dbkc';
@@ -75,7 +75,7 @@
         const NUM_CONDITIONS = 24;
         
         function checkStudyAvailability() {
-            fetch(SCRIPT_URL)
+            fetch(APPS_SCRIPT_URL)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -130,11 +130,11 @@
                         setTimeout(() => {
                             // Use image request to avoid CORS issues
                             const img = new Image();
-                            img.src = `${SCRIPT_URL}?action=assign&condition=${condition}`;
+                            img.src = `${APPS_SCRIPT_URL}?action=assign&condition=${condition}`;
                             
                             // Redirect after brief delay
                             setTimeout(() => {
-                                window.location.href = `${INQUISIT_URL}?subjectid=${subjectId}`;
+                                window.location.href = `${STUDY_BASE_URL}?subjectid=${subjectId}`;
                             }, 1000);
                         }, 2000);
                         
